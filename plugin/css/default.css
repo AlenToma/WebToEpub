@@ -32,7 +32,7 @@
 
 
 progress {
-    width: 52%;
+    width: 44%;
     height: 31px;
     margin: 0;
     padding: 0;
@@ -125,8 +125,9 @@ button {
 
 .progressSection {
     margin: auto;
-    width: 82%;
+    width: 100%;
     position: relative;
     display: flex;
     height: 30px;
+    margin-left: 69px;
 }

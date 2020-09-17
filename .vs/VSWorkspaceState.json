@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\eslint",
     "\\plugin",
-    "\\plugin\\js"
+    "\\plugin\\images"
   ],
-  "SelectedNode": "\\plugin\\popup.html",
   "PreviewInSolutionExplorer": false
 }
