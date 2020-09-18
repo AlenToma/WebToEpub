@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\plugin"
+    "\\plugin",
+    "\\plugin\\css",
+    "\\plugin\\js"
   ],
-  "SelectedNode": "\\plugin\\popup.html",
+  "SelectedNode": "\\plugin\\js\\ChapterUrlsUI.js",
   "PreviewInSolutionExplorer": false
 }
