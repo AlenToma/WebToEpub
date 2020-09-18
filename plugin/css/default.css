@@ -80,10 +80,8 @@ td.disabled {
 
 .container {
     border: 1px #CCC solid;
-    border-radius: 2px;
     display: table;
     padding: 10px;
-    margin: 10px;
     margin: auto;
     border-radius:5px;
 }
