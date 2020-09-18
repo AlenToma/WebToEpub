@@ -5,7 +5,7 @@ class ChapterUrlsUI {
     constructor(parser) {
         this.parser = parser;
         ChapterUrlsUI.getPleaseWaitMessageRow().hidden = false;
-        this.chapterIsHidden = true;
+        this.chapterUrlIsHidden = true;
     }
 
     connectButtonHandlers() {
@@ -26,16 +26,16 @@ class ChapterUrlsUI {
         var tb = document.getElementById("chapterUrlsTable");
         var th = tb.querySelector("tbody > tr:first-child > th:last-child")
         var tr = tb.querySelectorAll("tr");
-        if (this.chapterIsHidden)
+        if (this.chapterUrlIsHidden)
             th.removeAttribute("hidden")
         else th.setAttribute("hidden", "true")
         for (var i = 1; i <= tr.length - 1; i++) {
             var td = tr[i].lastChild;
-            if (this.chapterIsHidden)
+            if (this.chapterUrlIsHidden)
                 td.removeAttribute("hidden")
             else td.setAttribute("hidden", "true")
         }
-        this.chapterIsHidden = !this.chapterIsHidden;
+        this.chapterUrlIsHidden = !this.chapterUrlIsHidden;
     }
 
 
@@ -53,7 +53,7 @@ class ChapterUrlsUI {
             ChapterUrlsUI.appendCheckBoxToRow(row, chapter);
             ChapterUrlsUI.appendInputTextToRow(row, chapter);
             chapter.row = row;
-            ChapterUrlsUI.appendColumnDataToRow(row, chapter.sourceUrl, cl.chapterIsHidden);
+            ChapterUrlsUI.appendColumnDataToRow(row, chapter.sourceUrl, cl.chapterUrlIsHidden);
             linksTable.appendChild(row);
             ChapterUrlsUI.appendOptionToSelect(rangeStart, index, chapter, memberForTextOption);
             ChapterUrlsUI.appendOptionToSelect(rangeEnd, index, chapter, memberForTextOption);
