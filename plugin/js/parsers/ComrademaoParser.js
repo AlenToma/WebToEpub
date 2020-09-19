@@ -7,9 +7,9 @@ class ComrademaoParser extends Parser{
         super();
     }
 
-    //disabled() {
-    //    return chrome.i18n.getMessage("warningParserDisabledComradeMao");
-    //}
+    disabled() {
+        return chrome.i18n.getMessage("warningParserDisabledComradeMao");
+    }
 
     // This site can't handle more than 1 page at a time
     clampSimultanousFetchSize() {
@@ -19,17 +19,6 @@ class ComrademaoParser extends Parser{
     populateUI(dom) {
         super.populateUI(dom);
         document.getElementById("removeOriginalRow").hidden = false; 
-    }
-
-    customRawDomToContentStep(chapter, content) {
-        for(let s of content.querySelectorAll("div.collapse")) {
-            if (this.userPreferences.removeOriginal.value) {
-                s.remove();
-            } else {
-                let p = s.querySelector("p");
-                s.replaceWith(p);
-            }
-        } 
     }
 
     getChapterUrls(dom, chapterUrlsUI) {
@@ -71,12 +60,7 @@ class ComrademaoParser extends Parser{
     };
 
     extractTitleImpl(dom) {
-        return dom.querySelector("div.page-title-product_2 div.wrap-content h4");
-    };
-
-    extractAuthor(dom) {
-        let authorLabel = dom.querySelector("div.author");
-        return (authorLabel === null) ? super.extractAuthor(dom) : authorLabel.textContent;
+        return dom.querySelector(".entry-title");
     };
 
     removeUnwantedElementsFromContentElement(element) {
@@ -84,31 +68,11 @@ class ComrademaoParser extends Parser{
         super.removeUnwantedElementsFromContentElement(element);
     }
 
-    findChapterTitle(dom) {
-        return this.makeChapterTitleTextFromUrl(dom.baseURI)
-    }
-
-    makeChapterTitleTextFromUrl(url) {
-        let leaf = url
-            .split("/")
-            .filter(s => !util.isNullOrEmpty(s))
-            .reverse()[0];
-        let words = leaf
-            .split("-")
-            .map(this.capitalizeWord)
-            .join(" ");
-        return words;
-    }
-
-    capitalizeWord(word) {
-        return word.toUpperCase()[0] + word.substring(1);
-    }
-
     findCoverImageUrl(dom) {
         return util.getFirstImgSrc(dom, "#thumbnail");
     }
 
     getInformationEpubItemChildNodes(dom) {
-        return [...dom.querySelectorAll("div.page-title-product_2 div.wrap-content, div.info-single-product")];
+        return [...dom.querySelectorAll("#Description")];
     }
 }

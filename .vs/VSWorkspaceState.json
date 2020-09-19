@@ -3,8 +3,9 @@
     "",
     "\\plugin",
     "\\plugin\\css",
-    "\\plugin\\js"
+    "\\plugin\\js",
+    "\\plugin\\js\\parsers"
   ],
-  "SelectedNode": "\\plugin\\js\\ChapterUrlsUI.js",
+  "SelectedNode": "\\plugin\\js\\Util.js",
   "PreviewInSolutionExplorer": false
 }

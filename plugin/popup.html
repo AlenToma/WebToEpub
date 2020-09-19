@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>WebToEpub</title>
     <link href="css/default.css" rel="stylesheet" type="text/css" />
-    <script src="js/jquery.js" ></script>
     <base />
 </head>
 <body>
@@ -68,7 +67,7 @@
             <button id="defaultParserHelpButton">__MSG_button_Help__</button>
             <br />
             <br />
-            <div class="withBorder" ">
+            <div class="withBorder">
                 <div class="scrollingtable withMargin" id="defaultParserVewResult"></div>
             </div>
             <div id="defaultParserInstructions" hidden>
@@ -133,7 +132,7 @@
                     </td>
                 </tr>
             </table>
-
+          
             <section hidden id="advancedOptionsSection">
                 <table id="advancedOptionsTable">
                     <tr id="translatorRow" hidden>
@@ -316,8 +315,6 @@
                     <button id="reverseChapterUrlsOrderButton">__MSG_button_Reverse_Chapter_Urls_Order__</button>
                     <button id="editChaptersUrlsButton">__MSG_button_Edit_Chapter_Urls__</button>
                     <button id="copyUrlsToClipboardButton">__MSG_button_Copy_Urls_To_Clipboard__</button>
-                    <button id="showUrlsButton">__MSG_label_Show_Chapter_Urls__</button>
-
                 </div>
             </div>
             <button id="applyChangesButton" hidden>__MSG_button_Apply_Changes__</button>
@@ -326,7 +323,7 @@
                 <tr>
                     <th align="left">__MSG_column_Include__</th>
                     <th align="left">__MSG_column_Title__</th>
-                    <th hidden align="left">__MSG_column_URL__</th>
+                    <th align="left" hidden>__MSG_column_URL__</th>
                 </tr>
             </table>
             <div>
@@ -360,7 +357,7 @@
     <script src="js/parsers/BakaTsukiParser.js"></script>
     <script src="js/parsers/BakaTsukiSeriesPageParser.js"></script>
     <script src="js/parsers/BlogspotParser.js"></script>
-    <script src="js/parsers/BoxnovelOrgParser.js"></script>
+    <script src="js/parsers/BoxnovelOrgParser.js"></script> 
     <script src="js/parsers/BoxnovelParser.js"></script>
     <script src="js/parsers/ChineseFantasyNovelsParser.js"></script>
     <script src="js/parsers/ComrademaoParser.js"></script>
@@ -368,15 +365,20 @@
     <script src="js/parsers/DarkNovelsParser.js"></script>
     <script src="js/parsers/DefaultParser.js"></script>
     <script src="js/parsers/DeviantArtParser.js"></script>
+    <script src="js/parsers/EightMusesParser.js"></script>
+    <script src="js/parsers/ErofusParser.js"></script>
     <script src="js/parsers/FanFictionParser.js"></script>
     <script src="js/parsers/FastNovelParser.js"></script>
     <script src="js/parsers/FictionManiaParser.js"></script>
     <script src="js/parsers/FicwadParser.js"></script>
     <script src="js/parsers/FlyingLinesParser.js"></script>
+    <script src="js/parsers/FoxtellerParser.js"></script>
     <script src="js/parsers/GravityTalesParser.js"></script>
     <script src="js/parsers/GutenbergDEParser.js"></script>
     <script src="js/parsers/HentaiFoundryParser.js"></script>
     <script src="js/parsers/ImgurParser.js"></script>
+    <script src="js/parsers/IndomtlParser.js"></script>
+    <script src="js/parsers/IsekaiScanParser.js"></script>
     <script src="js/parsers/JaptemParser.js"></script>
     <script src="js/parsers/JpmtlParser.js"></script>
     <script src="js/parsers/KakuyomuParser.js"></script>
@@ -395,14 +397,16 @@
     <script src="js/parsers/MangaHereParser.js"></script>
     <script src="js/parsers/MangaReadParser.js"></script>
     <script src="js/parsers/McStoriesParser.js"></script>
+    <script src="js/parsers/MMyWwuxiaWorldParser.js"></script>
     <script src="js/parsers/MtledNovelsParser.js"></script>
     <script src="js/parsers/MtlnovelParser.js"></script>
-    <script src="js/parsers/MoonQuillParser.js"></script>
+    <script src="js/parsers/MoonQuillParser.js"></script> 
     <script src="js/parsers/MuggleNetParser.js"></script>
     <script src="js/parsers/NanodesuParser.js"></script>
     <script src="js/parsers/NightcomicParser.js"></script>
     <script src="js/parsers/NovelAllParser.js"></script>
     <script src="js/parsers/NovelCrushParser.js"></script>
+    <script src="js/parsers/NovelFeverParser.js"></script>
     <script src="js/parsers/NovelfullParser.js"></script>
     <script src="js/parsers/NovelhallParser.js"></script>
     <script src="js/parsers/NovelOnlineFreeParser.js"></script>
@@ -410,6 +414,7 @@
     <script src="js/parsers/NovelSpreadParser.js"></script>
     <script src="js/parsers/NovelsRockParser.js"></script>
     <script src="js/parsers/NovelUniverseParser.js"></script>
+    <script src="js/parsers/NovelUpdatesOnlineParser.js"></script>
     <script src="js/parsers/NrvnqsrParser.js"></script>
     <script src="js/parsers/PatreonParser.js"></script>
     <script src="js/parsers/QidianParser.js"></script>
@@ -424,6 +429,7 @@
     <script src="js/parsers/ScribblehubParser.js"></script>
     <script src="js/parsers/ShikkakutranslationsParser.js"></script>
     <script src="js/parsers/ShinsoriParser.js"></script>
+    <script src="js/parsers/ShirokunsParser.js"></script>
     <script src="js/parsers/SpacebattlesParser.js"></script>
     <script src="js/parsers/SspaiParser.js"></script>
     <script src="js/parsers/StocxParser.js"></script>
@@ -431,7 +437,7 @@
     <script src="js/parsers/TapreadParser.js"></script>
     <script src="js/parsers/TomotranslationsParser.js"></script>
     <script src="js/parsers/TruyenfullParser.js"></script>
-    <script src="js/parsers/TruyenyyParser.js"></script>
+    <script src="js/parsers/TruyenyyParser.js"></script>  
     <script src="js/parsers/UltimaguilParser.js"></script>
     <script src="js/parsers/UnlimitedNovelFailuresParser.js"></script>
     <script src="js/parsers/VipNovelParser.js"></script>
@@ -462,7 +468,6 @@
     <script src="js/parsers/WuxiaworldWorldParser.js"></script>
     <script src="js/parsers/ZenithNovelsParser.js"></script>
     <script src="js/parsers/ZirusMusingsParser.js"></script>
-    <script src="js/parsers/FoxtellerParser.js"></script>
     <script src="jszip/dist/jszip.min.js"></script>
     <script src="js/EpubItemSupplier.js"></script>
     <script src="js/CoverImageUI.js"></script>

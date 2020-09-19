@@ -1,73 +1,70 @@
 "use strict";
 
-parserFactory.register("foxteller.com", function () { return new FoxtellerParser() });
+parserFactory.register("foxteller.com", () => new FoxtellerParser());
 
-
-class FoxtellerParser extends Parser {
+class FoxtellerParser extends Parser{
     constructor() {
         super();
     }
 
-    clampSimultanousFetchSize() {
-        return 1;
-    }
-
     async getChapterUrls(dom) {
         return [...dom.querySelectorAll(".card li a")]
-            .map(link => util.hyperLinkToChapter(link))
-    };
-
-    extractTitleImpl(dom) {
-        return dom.querySelector(".novel-title > h2");
-    };
-
-
-    removeUnwantedElementsFromContentElement(element) {
-        util.removeChildElementsMatchingCss(element, "button, nav, div#comments");
-        super.removeUnwantedElementsFromContentElement(element);
-    }
-
-
-    findChapterTitle(dom) {
-        return dom.querySelector(".page-header > h2").innerText;
-    }
-
-
-    findCoverImageUrl(dom) {
-        return util.getFirstImgSrc(dom, ".novel-featureimg");
-    }
-
-    static decrypt(data) {
-        var n;
-        return (n = (n = (n = (n = (n = (n = (n = data).replace(/%Ra&/g, "A")).replace(/%Rc&/g, "B")).replace(/%Rb&/g, "C")).replace(/%Rd&/g, "D")).replace(/%Rf&/g, "E")).replace(/%Re&/g, "F"),
-            decodeURIComponent(Array.prototype.map.call(atob(n), function (e) {
-                return "%" + ("00" + e.charCodeAt(0).toString(16)).slice(-2)
-            }).join("")));
+            .map(link => util.hyperLinkToChapter(link));
     }
 
     findContent(dom) {
-        var novRegex = /.*?novel_id'\s?:\s?'([\w\s]+)'/i
-        var chapRegex = /.*?chapter_id'\s?:\s?'([\w\s]+)'/i
+        return Parser.findConstrutedContent(dom);
+    }
 
-        var x1 = undefined;
-        var x2 = undefined;
-        var html = dom.head.innerText;
-        x1 = html.match(novRegex)[1]
-        x2 = html.match(chapRegex)[1]
-        var result = undefined;
-        $.ajax({
+    extractTitleImpl(dom) {
+        return dom.querySelector("div.novel-title h2");
+    }
+
+    findCoverImageUrl(dom) {
+        return util.getFirstImgSrc(dom, "figure.novel-featureimg");
+    }
+
+    async fetchChapter(url) {
+        var chapterDom = (await HttpClient.wrapFetch(url)).responseXML;
+        var content = (await this.fetchContentForChapter(chapterDom));
+        let newDoc = Parser.makeEmptyDocForContent();
+        let header = newDoc.dom.createElement("h1");
+        header.textContent = chapterDom.querySelector("div.page-header h3").textContent;
+        newDoc.content.appendChild(header);
+        newDoc.content.appendChild(content.querySelector("article"));
+        return newDoc.dom;        
+    }
+
+    async fetchContentForChapter(dom) {
+        let novelRegex = /.*?novel_id'\s?:\s?'([\w\s]+)'/i
+        let chapRegex = /.*?chapter_id'\s?:\s?'([\w\s]+)'/i
+
+        let html = dom.head.innerText;
+        let storyID = html.match(novelRegex)[1];
+        let chapterID = html.match(chapRegex)[1];
+        let options = {
             method: "POST",
-            url: "https://www.foxteller.com/aux_dem",
-            data: { x1: x1, x2: x2 },
-            async: false
-        })
-            .done(function (msg) {
-                result =document.createElement("div")
-                result.innerHTML = FoxtellerParser.decrypt(msg.aux);
-            }).fail(function (e) {
-                console.log(e);
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            credentials: "include",
+            body: JSON.stringify({x1: storyID, x2: chapterID})
+        };
+        let json = (await HttpClient.fetchJson("https://www.foxteller.com/aux_dem", options)).json;
+        let decoded = this.decodeFoxteller(json);
+        let rawHtml = "<article>" + decoded + "</article>";
+        return new DOMParser().parseFromString(rawHtml, "text/html");
+    }
 
-            });
-        return result;
-    };
+    decodeFoxteller(json) {
+        var n = json.aux.replace(/%Ra&/g, "A").replace(/%Rc&/g, "B").replace(/%Rb&/g, "C").replace(/%Rd&/g, "D").replace(/%Rf&/g, "E").replace(/%Re&/g, "F");
+        return decodeURIComponent(Array.prototype.map.call(atob(n), function(e) {
+            return "%" + ("00" + e.charCodeAt(0).toString(16)).slice(-2)
+        }).join(""));   
+    }    
+
+    getInformationEpubItemChildNodes(dom) {
+        return [...dom.querySelectorAll("div.novel-description")];
+    }
 }
