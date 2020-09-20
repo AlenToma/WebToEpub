@@ -81,19 +81,6 @@
             </div>
         </section>
         <section id="inputSection">
-            <table class="tableSwitch">
-                <tr>
-                    <td>Dark</td>
-                    <td>
-                        <div class="switch">
-                            <input id="designSwitch" type="checkbox" class="switch-input" />
-                            <label for="designSwitch" class="switch-label">Switch</label>
-                        </div>
-                    </td>
-                    <td>Light</td>
-
-                </tr>
-            </table>
             <table id="inputTable">
                 <tr>
                     <td>__MSG_label_Starting_URL__</td>
@@ -158,6 +145,16 @@
                     <tr id="translatorRow" hidden>
                         <td>__MSG_label_Translator__</td>
                         <td><input id="translatorInput" type="text" name="translatorInput" size="80" /></td>
+                    </tr>
+                    <tr>
+                        <td>Theme </td>
+                        <td>
+                            <select>
+                                <option value="LightMode">Always Light Mode</option>
+                                <option value="DarkMode">Always Dark Mode</option>
+                                <option selected="selected" value="">Use current OS selection</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr id="fileAuthorAsRow" hidden>
                         <td>__MSG_label_File_Author_as__</td>
