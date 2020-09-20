@@ -119,6 +119,7 @@ td.disabled {
     padding: 10px;
     margin: auto;
     border-radius: 5px;
+    position:relative;
 }
 
 
@@ -126,13 +127,14 @@ input[type=text], input[type=url], textarea, select {
     padding: 4px;
     border: 1px #CCC solid;
     border-radius: 3px;
+    max-width: 400px;
 }
 
 #inputSection input {
     width: 69%;
 }
 
-#inputSection > table, #chapterUrlsTable {
+#inputSection table, #chapterUrlsTable {
     width: 100%;
 }
 
@@ -140,6 +142,7 @@ input[type=text], input[type=url], textarea, select {
         width: 101.5%;
         position: relative;
         left: -17px;
+        max-width: 580px;
     }
 
     #chapterUrlsTable tbody > tr > th {
@@ -192,14 +195,15 @@ button {
     padding-top: 30px;
     padding-left: 39px;
     border-radius: 8px;
+    max-width: 648px;
 }
 
 #coverUrlSection img {
-    max-height: 111px;
-    width: auto;
+    max-height: 142px;
+    min-width: 106.5px;
     position: absolute;
-    top: 83px;
-    margin-left: -153px;
+    top: 44px;
+    right: 7%;
 }
 
 /*@media (prefers-color-scheme: dark) {

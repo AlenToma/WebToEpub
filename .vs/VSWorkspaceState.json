@@ -3,9 +3,8 @@
     "",
     "\\plugin",
     "\\plugin\\css",
-    "\\plugin\\js",
-    "\\plugin\\js\\parsers"
+    "\\plugin\\js"
   ],
-  "SelectedNode": "\\plugin\\js\\Util.js",
+  "SelectedNode": "\\plugin\\js\\main.js",
   "PreviewInSolutionExplorer": false
 }
