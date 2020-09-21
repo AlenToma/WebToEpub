@@ -3,8 +3,9 @@
     "",
     "\\plugin",
     "\\plugin\\css",
-    "\\plugin\\js"
+    "\\plugin\\js",
+    "\\plugin\\js\\parsers"
   ],
-  "SelectedNode": "\\plugin\\js\\main.js",
+  "SelectedNode": "\\plugin\\js\\parsers\\FoxtellerParser.js",
   "PreviewInSolutionExplorer": false
 }

@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>WebToEpub</title>
     <link href="css/default.css" rel="stylesheet" type="text/css" />
+    <link href="css/autoDark.css" rel="stylesheet" type="text/css"  id="autoDark" />
+    <link href="css/alwaysDark.css" rel="stylesheet" type="text/css" id="alwaysDark" disabled="true"/>
     <base />
 </head>
 <body>
@@ -147,12 +149,12 @@
                         <td><input id="translatorInput" type="text" name="translatorInput" size="80" /></td>
                     </tr>
                     <tr>
-                        <td>Theme </td>
+                        <td>__MSG_label_Theme__</td>
                         <td>
-                            <select>
-                                <option value="LightMode">Always Light Mode</option>
-                                <option value="DarkMode">Always Dark Mode</option>
-                                <option selected="selected" value="">Use current OS selection</option>
+                            <select id="themeColorTag">
+                                <option class="i18n" value="LightMode">__MSG_option_ID_Theme_Always_Light__</option>
+                                <option class="i18n" value="DarkMode">__MSG_option_ID_Theme_Always_Dark__</option>
+                                <option class="i18n" selected="true" value="">__MSG_option_ID_Theme_OS_Selection__</option>
                             </select>
                         </td>
                     </tr>
